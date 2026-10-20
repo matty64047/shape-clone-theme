@@ -134,3 +134,7 @@ html {
 		display: none;
 	}
 }
+/* Force Oldschool Grotesk for all text (overrides Tailwind font inherit) */
+body, h1, h2, h3, h4, p, a, span, div, button, input, textarea, blockquote, li {
+	font-family: 'Oldschool Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif !important;
+}
