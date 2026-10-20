@@ -137,5 +137,43 @@
 </footer>
 
 <?php wp_footer(); ?>
+
+<!-- ========================================================================== -->
+<!-- GSAP ScrollTrigger - fade-up entrance animations on [data-animate] elements -->
+<!-- ========================================================================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray('[data-animate="fade-up"]').forEach(function(el) {
+var delay = parseFloat(el.getAttribute('data-animate-delay')) || 0;
+gsap.fromTo(el, { y: 60, opacity: 0 }, {
+y: 0, opacity: 1, duration: 1, delay: delay,
+ease: 'power3.out',
+scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+});
+});
+
+window.addEventListener('load', function() { ScrollTrigger.refresh(); });
+});
+</script>
+
+<!-- ========================================================================== -->
+<!-- Swiper.js - blog post carousel                                               -->
+<!-- ========================================================================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+if (typeof Swiper === 'undefined') return;
+
+new Swiper('.blog-swiper', {
+slidesPerView: 1.2, spaceBetween: 16, centeredSlides: false, loop: false,
+breakpoints: {
+640: { slidesPerView: 2, spaceBetween: 20 },
+1024: { slidesPerView: 3, spaceBetween: 24 }
+}
+});
+});
+</script>
 </body>
 </html>
